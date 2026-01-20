@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samservice - Vente et Réparation de Téléphones à Banfora</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #a53d8e, #236cb4);
+            color: rgb(253, 32, 32);
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(153, 95, 95, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: #eb4553;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: #34db74;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: rgb(253, 56, 30);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 5px 0;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #3498db;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80');
+            background-size: cover;
+            background-position: center;
+            color: rgb(138, 105, 105);
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #5591b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.2rem;
+            color: #097ef3;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ec6324;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background: rgb(185, 218, 39);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #221d05;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #073058;
+        }
+        
+        /* Products Section */
+        .product-categories {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .category-btn {
+            padding: 12px 24px;
+            background: rgb(126, 18, 18);
+            border: 2px solid #1e3646;
+            border-radius: 50px;
+            color: #eedd91;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: #280863;
+            color: rgb(253, 6, 19);
+        }
+        
+        .products-container {
+            margin-bottom: 60px;
+        }
+        
+        .product-category {
+            display: none;
+        }
+        
+        .product-category.active {
+            display: block;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-brand {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(52, 152, 219, 0.9);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        
+        .btn-order {
+            width: 100%;
+            padding: 12px;
+            background: #2ecc71;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-order:hover {
+            background: #27ae60;
+        }
+        
+        /* Ad Video */
+        .ad-section {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            margin: 60px 0;
+            text-align: center;
+        }
+        
+        .ad-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-placeholder {
+            background: #1a2530;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .video-placeholder i {
+            font-size: 5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .video-placeholder p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .about-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .about-info p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #3498db;
+            margin-right: 15px;
+            width: 30px;
+        }
+        
+        .map-placeholder {
+            background: #eee;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+        
+        /* Team Section */
+        .team {
+            margin-bottom: 60px;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            padding: 25px 20px;
+        }
+        
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid #f1f8ff;
+        }
+        
+        .team-member h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .team-member p {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #09c979;
+            color: rgb(18, 4, 68);
+            padding: 60px 0 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #a10c0c;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #02010f;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #3498db;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 1.2rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #4d0523;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal for order */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #888;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            .mobile-menu {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .mobile-menu ul {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .video-placeholder {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .category-btn {
+                width: 200px;
+            }
+            
+            .video-placeholder {
+                height: 250px;
+            }
+            
+            .video-placeholder i {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h1>Sam<span>service</span></h1>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+              <!--<nav class="desktop-menu">
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>-->  
+                
+                <nav class="mobile-menu" id="mobileMenu">
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#apropos">À propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <h2>Samservice - Votre spécialiste en téléphonie à Banfora</h2>
+            <p>Vente de téléphones portables, accessoires, radios et services de réparation de qualité. Livraison gratuite dans toute la ville de Banfora.</p>
+            <a href="#produits" class="btn">Voir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Vente de Téléphones</h3>
+                    <p>iPhone, Itel, Tecno, Infinix, Samsung et autres marques au meilleur prix.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>Accessoires Téléphone</h3>
+                    <p>Écouteurs, coques, chargeurs, batteries et protections de qualité.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>Vente de Radios</h3>
+                    <p>Radios portables et de salon pour tous vos besoins en divertissement.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Réparation</h3>
+                    <p>Réparation rapide et professionnelle de tous types de téléphones portables.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produits">
+        <div class="container">
+            <h2 class="section-title">Nos Produits</h2>
+            
+            <div class="product-categories">
+                <button class="category-btn active" data-category="tous">Tous les produits</button>
+                <button class="category-btn" data-category="iphone">iPhone</button>
+                <button class="category-btn" data-category="itel">Itel</button>
+                <button class="category-btn" data-category="tecno">Tecno</button>
+                <button class="category-btn" data-category="infinix">Infinix</button>
+                <button class="category-btn" data-category="autres">Autres marques</button>
+            </div>
+            
+            <div class="products-container">
+                <!-- iPhone Products -->
+                <div class="product-category active" id="iphone-category">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 1.8rem;">iPhone <i class="fas fa-mobile-alt" style="color: #3498db;"></i></h3>
+                    <div class="products-grid">
+                        <!-- Product cards will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Itel Products -->
+                <div class="product-category" id="itel-category">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 1.8rem;">Itel <i class="fas fa-mobile-alt" style="color: #3498db;"></i></h3>
+                    <div class="products-grid">
+                        <!-- Product cards will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Tecno Products -->
+                <div class="product-category" id="tecno-category">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 1.8rem;">Tecno <i class="fas fa-mobile-alt" style="color: #3498db;"></i></h3>
+                    <div class="products-grid">
+                        <!-- Product cards will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Infinix Products -->
+                <div class="product-category" id="infinix-category">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 1.8rem;">Infinix <i class="fas fa-mobile-alt" style="color: #3498db;"></i></h3>
+                    <div class="products-grid">
+                        <!-- Product cards will be generated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Other Products -->
+                <div class="product-category" id="autres-category">
+                    <h3 style="margin-bottom: 20px; color: #2c3e50; font-size: 1.8rem;">Autres marques <i class="fas fa-mobile-alt" style="color: #3498db;"></i></h3>
+                    <div class="products-grid">
+                        <!-- Product cards will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Video Section -->
+    <section class="ad-section">
+        <div class="container">
+            <h2 class="ad-title">Découvrez Samservice en vidéo</h2>
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Vidéo publicitaire de présentation de Samservice</p>
+                    <p style="margin-top: 15px; font-size: 0.9rem;">(Vidéo à insérer ici)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About and Contact Section -->
+    <section id="apropos">
+        <div class="container">
+            <h2 class="section-title">À propos & Contact</h2>
+            
+            <div class="about">
+                <div class="about-info">
+                    <h3>Samservice - Votre partenaire en téléphonie</h3>
+                    <p>Samservice est une entreprise de télécom basée à Banfora, Burkina Faso. Nous sommes spécialisés dans la vente de téléphones portables, d'accessoires et de radios, ainsi que dans la réparation de téléphones.</p>
+                    <p>Notre équipe de 5 agents qualifiés est à votre service pour vous offrir les meilleurs produits et services au meilleur prix.</p>
+                    <p>Nous sommes situés au <strong>Secteur 15, côté sud du Lycée Saint Jean de Banfora</strong>. La livraison est gratuite dans toute la ville de Banfora.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adresse:</strong>
+                                <p>Secteur 15, côté sud du Lycée Saint Jean, Banfora, Burkina Faso</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <strong>WhatsApp:</strong>
+                                <p>+226 56 32 30 77</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <strong>Propriétaire:</strong>
+                                <p>Traoré Samba</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Notre emplacement</h3>
+                    <p>Secteur 15, côté sud du Lycée Saint Jean</p>
+                    <p>Banfora, Burkina Faso</p>
+                    <p style="margin-top: 20px; font-size: 0.9rem;">(Carte à insérer ici)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Agent">
+                    <h4>Traoré Samba</h4>
+                    <p>Propriétaire & Gérant</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Agent">
+                    <h4>Fatimata Koné</h4>
+                    <p>Responsable des Ventes</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Agent">
+                    <h4>Jean Ouedraogo</h4>
+                    <p>Technicien en Réparation</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Agent">
+                    <h4>Aïcha Sawadogo</h4>
+                    <p>Conseillère Clientèle</p>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Agent">
+                    <h4>Moussa Diarra</h4>
+                    <p>Agent de Livraison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Samservice</h3>
+                    <p>Votre partenaire de confiance en téléphonie à Banfora. Qualité, prix compétitifs et service après-vente irréprochable.</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/22656323077" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Liens rapides</h3>
+                    <a href="#accueil">Accueil</a>
+                    <a href="#services">Nos Services</a>
+                    <a href="#produits">Produits</a>
+                    <a href="#apropos">À propos</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Secteur 15, côté sud du Lycée Saint Jean, Banfora</p>
+                    <p><i class="fab fa-whatsapp"></i> +226 56 32 30 77</p>
+                    <p><i class="fas fa-user"></i> Traoré Samba</p>
+                    <p><i class="fas fa-shipping-fast"></i> Livraison gratuite à Banfora</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 Samservice - Tous droits réservés. Conçu avec passion pour Banfora.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Commander un produit</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="productName">Produit:</label>
+                    <input type="text" id="productName" class="form-control" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientName">Votre nom complet:</label>
+                    <input type="text" id="clientName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientPhone">Votre numéro de téléphone:</label>
+                    <input type="tel" id="clientPhone" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientAddress">Votre adresse à Banfora:</label>
+                    <input type="text" id="clientAddress" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Quantité:</label>
+                    <select id="quantity" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Commander via WhatsApp</button>
+                <p style="margin-top: 15px; font-size: 0.9rem; color: #666;">Nous vous contacterons sur WhatsApp pour confirmer votre commande.</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = {
+            iphone: [
+                { name: "iPhone 14 Pro Max", price: "850,000 FCFA", image: "https://images.unsplash.com/photo-1663499482523-1c0c1eae108d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "iPhone 13 Pro", price: "650,000 FCFA", image: "https://images.unsplash.com/photo-1632661674596-df8be070a6c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "iPhone 12", price: "480,000 FCFA", image: "https://images.unsplash.com/photo-1607936854279-55e8a4c64888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "iPhone SE (2022)", price: "350,000 FCFA", image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" }
+            ],
+            itel: [
+                { name: "Itel Vision 5", price: "85,000 FCFA", image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Itel P37", price: "65,000 FCFA", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Itel A58", price: "75,000 FCFA", image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Itel S16", price: "95,000 FCFA", image: "https://images.unsplash.com/photo-1546054451-aa284f497c2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" }
+            ],
+            tecno: [
+                { name: "Tecno Camon 19", price: "125,000 FCFA", image: "https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Tecno Spark 9", price: "95,000 FCFA", image: "https://images.unsplash.com/photo-1592910147751-2f0b6b6f4c3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Tecno Pova 4", price: "110,000 FCFA", image: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Tecno Pop 6", price: "65,000 FCFA", image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" }
+            ],
+            infinix: [
+                { name: "Infinix Hot 12", price: "105,000 FCFA", image: "https://images.unsplash.com/photo-1546054451-aa284f497c2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Infinix Note 12", price: "135,000 FCFA", image: "https://images.unsplash.com/photo-1592910147751-2f0b6b6f4c3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Infinix Zero X", price: "175,000 FCFA", image: "https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Infinix Smart 6", price: "75,000 FCFA", image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" }
+            ],
+            autres: [
+                { name: "Samsung Galaxy S22", price: "450,000 FCFA", image: "https://images.unsplash.com/photo-1647427014769-2ffa43c0d204?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Nokia G50", price: "150,000 FCFA", image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Xiaomi Redmi Note 11", price: "135,000 FCFA", image: "https://images.unsplash.com/photo-1598327105854-c8674faddf74?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" },
+                { name: "Oppo A96", price: "155,000 FCFA", image: "https://images.unsplash.com/photo-1596558450255-7c0b7be9d56a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" }
+            ]
+        };
+
+        // DOM Elements
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productCategories = document.querySelectorAll('.product-category');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const orderModal = document.getElementById('orderModal');
+        const closeModal = document.getElementById('closeModal');
+        const orderForm = document.getElementById('orderForm');
+        const productNameInput = document.getElementById('productName');
+        let currentProduct = '';
+
+        // Initialize products on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate product cards for each category
+            for (const category in products) {
+                const container = document.querySelector(`#${category}-category .products-grid`);
+                if (container) {
+                    products[category].forEach(product => {
+                        const productCard = createProductCard(product, category);
+                        container.appendChild(productCard);
+                    });
+                }
+            }
+
+            // Set up event listeners
+            setupEventListeners();
+        });
+
+        // Create product card element
+        function createProductCard(product, category) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-image">
+                    <div class="product-brand">${category.charAt(0).toUpperCase() + category.slice(1)}</div>
+                    <img src="${product.image}" alt="${product.name}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <h4>${product.name}</h4>
+                    <div class="product-price">${product.price}</div>
+                    <button class="btn-order" data-product="${product.name}" data-price="${product.price}">Commander</button>
+                </div>
+            `;
+            return card;
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Category filtering
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // Update active button
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show/hide categories
+                    if (category === 'tous') {
+                        productCategories.forEach(cat => cat.classList.add('active'));
+                    } else {
+                        productCategories.forEach(cat => cat.classList.remove('active'));
+                        document.getElementById(`${category}-category`).classList.add('active');
+                    }
+                });
+            });
+
+            // Mobile menu toggle
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+
+            // Order button clicks
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('btn-order')) {
+                    currentProduct = e.target.getAttribute('data-product');
+                    const productPrice = e.target.getAttribute('data-price');
+                    productNameInput.value = `${currentProduct} - ${productPrice}`;
+                    orderModal.style.display = 'flex';
+                }
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                orderModal.style.display = 'none';
+            });
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === orderModal) {
+                    orderModal.style.display = 'none';
+                }
+            });
+
+            // Handle order form submission
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const clientName = document.getElementById('clientName').value;
+                const clientPhone = document.getElementById('clientPhone').value;
+                const clientAddress = document.getElementById('clientAddress').value;
+                const quantity = document.getElementById('quantity').value;
+                
+                // Create WhatsApp message
+                const message = `Bonjour Samservice! Je souhaite commander:
+Produit: ${currentProduct}
+Quantité: ${quantity}
+Nom: ${clientName}
+Téléphone: ${clientPhone}
+Adresse: ${clientAddress}
+Livraison: Banfora (Secteur 15)
+Merci!`;
+                
+                // Encode the message for URL
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/22656323077?text=${encodedMessage}`;
+                
+                // Open WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                // Reset form and close modal
+                orderForm.reset();
+                orderModal.style.display = 'none';
+                
+                // Show success message
+                alert('Merci pour votre commande! Vous allez être redirigé vers WhatsApp pour finaliser la commande.');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
